@@ -4,6 +4,7 @@ import { checkDb } from "../index.js";
 
 export const createOrder = async (req, res) => {
   const { currency, amount } = req.body;
+  console.log(currency);
   try {
     const order = await paypal.createOrderComp(currency, amount);
     res.json(order);

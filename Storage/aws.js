@@ -9,12 +9,12 @@ const extractName = (url) => {
 export const bucketAcess = () => {
   const region = process.env.BUCKET_REGION;
   const accessKeyId = process.env.BUCKET_ACCESS_KEY;
-  const secretKey = process.env.BUCKET_SECRET_KEY;
+  const secretAccessKey = process.env.BUCKET_SECRET_KEY;
   const s3 = new S3Client({
     region: region,
     credentials: {
       accessKeyId,
-      secretAccessKey: process.env.BUCKET_SECRET_KEY,
+      secretAccessKey,
     },
   });
   return s3;
@@ -22,6 +22,7 @@ export const bucketAcess = () => {
 
 export const upload = (container) => {
   const s3 = bucketAcess();
+  console.log(s3);
   try {
     return multer({
       storage: multerS3({

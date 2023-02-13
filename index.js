@@ -25,6 +25,7 @@ app.use(express.json());
 app.use("/news", newsRoutes);
 app.use("/donations", donationsRoutes)
 app.use("/products", productsRoutes)
+console.log(process.env.PORT);
 const PORT = process.env.PORT || 5000;
 
 mongoose
